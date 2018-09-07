@@ -2,29 +2,29 @@
     <!-- app.vue 的template标签内只能有一个节点 -->
     <div id="app">
         <div id="cover"></div>
-        <APP_Header></APP_Header>
-        <APP_Todo></APP_Todo>
-        <APP_Footer></APP_Footer>
+        <AppHeader></AppHeader>
+        <AppTodo></AppTodo>
+        <AppFooter></AppFooter>
     </div>
 </template>
 
 <script>
     // 引入header.vue组件
-    import APP_Header from './todo/header.vue';
+    import AppHeader from './layout/header.vue'
 
-    // 引入footer.jsx组件
-    import APP_Footer from './todo/footer.jsx';
+// 引入footer.jsx组件
+import AppFooter from './layout/footer.jsx'
 
-    // 引入todo.vue组件
-    import APP_Todo from './todo/todo.vue';
+// 引入todo.vue组件
+import AppTodo from './views/todo/todo.vue'
 
-    export default {
-        // 声明组件，之后便可以使用组件标签
-        components: {
-            APP_Header,
-            APP_Footer,
-            APP_Todo
-        }
+export default {
+      // 声明组件，之后便可以使用组件标签
+      components: {
+        AppHeader,
+        AppFooter,
+        AppTodo
+      }
     }
 </script>
 

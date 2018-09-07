@@ -11,22 +11,21 @@
 
 <script>
     export default {
-        // 父子组件间传值
-        props: {
-            // 接收父组件todo.vue传过来的todo对象
-            todo: {
-                type: Object,
-                require: true
-            }
-        },
-        methods: {
-            deleteTodo() {
-                // this.$emit 触发del事件，并返回todo.id
-                // 往父组件传递 del 方法
-                this.$emit('del', this.todo.id)
-
-            }
+      // 父子组件间传值
+      props: {
+        // 接收父组件todo.vue传过来的todo对象
+        todo: {
+          type: Object,
+          require: true
         }
+      },
+      methods: {
+        deleteTodo () {
+          // this.$emit 触发del事件，并返回todo.id
+          // 往父组件传递 del 方法
+          this.$emit('del', this.todo.id)
+        }
+      }
     }
 </script>
 
@@ -72,10 +71,10 @@
         padding-left 5px
         cursor pointer
         &:after{
-            content: url('../assets/images/round.svg')
+            content: url('../../assets/images/round.svg')
         }
         &:checked:after{
-            content: url('../assets/images/done.svg')
+            content: url('../../assets/images/done.svg')
         }
     }
     .destroy{
