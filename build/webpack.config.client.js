@@ -1,23 +1,25 @@
-const path = require('path');
-const HTMLPlugin = require('html-webpack-plugin');
-const webpack = require('webpack');
-const merge = require('webpack-merge');
-const ExtractPlugin = require('mini-css-extract-plugin');
+const path = require('path')
+const HTMLPlugin = require('html-webpack-plugin')
+const webpack = require('webpack')
+const merge = require('webpack-merge')
+const ExtractPlugin = require('mini-css-extract-plugin')
 const baseConfig = require('./webpack.config.base')
 const VueLoaderPlugin = require('vue-loader/lib/plugin')
 
-const isDev = process.env.NODE_ENV === 'development';
+const isDev = process.env.NODE_ENV === 'development'
 const devServer = {
   port: '8888',
   host: '0.0.0.0',
-  overlay: {  // webpack编译出现错误，则显示到网页上
-    errors: true,
+  // webpack编译出现错误，则显示到网页上
+  overlay: {
+    errors: true
   },
+  historyApiFallback: true,
   // open: true,
 
   // 不刷新热加载数据
   hot: true
-};
+}
 const defaultPlugins = [
   new webpack.DefinePlugin({
     'process.env': {
@@ -28,7 +30,7 @@ const defaultPlugins = [
   new VueLoaderPlugin()
 ]
 
-let conifg;
+let config
 
 if (isDev) {
   config = merge(baseConfig, {
@@ -52,12 +54,17 @@ if (isDev) {
     },
     devtool: '#cheap-module-eval-source-map',
     devServer,
+    // for pratice
+    // resolve: {
+    //   alias: {
+    //     'vue': path.join(__dirname, '../node_modules/vue/dist/vue.esm.js')
+    //   }
+    // },
     plugins: defaultPlugins.concat([
       new webpack.HotModuleReplacementPlugin(),
       new webpack.NoEmitOnErrorsPlugin()
     ])
   })
-  
 } else {
   config = merge(baseConfig, {
     entry: {
@@ -65,7 +72,7 @@ if (isDev) {
       vendor: ['vue']
     },
     output: {
-      filename: '[name].[chunkhash:8].js',
+      filename: '[name].[chunkhash:8].js'
     },
     module: {
       rules: [
@@ -113,4 +120,4 @@ if (isDev) {
   })
 }
 
-module.exports = config;
+module.exports = config

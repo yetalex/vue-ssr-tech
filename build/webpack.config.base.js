@@ -1,12 +1,12 @@
-const path = require('path');
-
-const isDev = process.env.NODE_ENV === 'development';
+const path = require('path')
 
 const config = {
   target: 'web',
-  entry: path.join(__dirname, '../client/index.js'),   // 输入：项目主文件（入口文件）
+  // 输入：项目主文件（入口文件）
+  entry: path.join(__dirname, '../client/index.js'),
   output: {       // 输出
-    filename: 'build.[hash:8].js',  // 输出的文件名
+    // 输出的文件名
+    filename: 'build.[hash:8].js',
     path: path.join(__dirname, '../dist')  // 输出路径
   },
   module: {       // 配置加载资源
@@ -44,6 +44,6 @@ const config = {
       }
     ]
   }
-};
+}
 
-module.exports = config;
+module.exports = config

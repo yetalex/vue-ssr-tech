@@ -32,6 +32,7 @@
                   @clearAllCompleted="clearAllCompleted"
         >
         </AppTabs>
+        <router-view></router-view>
     </section>
 </template>
 
